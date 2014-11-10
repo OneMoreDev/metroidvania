@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controller\MotionController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controller\MotionController.cs" Line="26" Column="38" />
-      <File FileName="Assets\Scripts\Helpers.cs" Line="5" Column="23" />
+      <File FileName="Assets\Scripts\Controller\MotionController.cs" Line="34" Column="16" />
+      <File FileName="Assets\Scripts\Helpers.cs" Line="6" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
