@@ -87,8 +87,8 @@ GameObject:
   - 50: {fileID: 134715557}
   - 114: {fileID: 134715561}
   m_Layer: 0
-  m_Name: New Sprite
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 134715556}
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_FixedAngle: 1
   m_IsKinematic: 0
@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8125ccd9e41aa8c4b9b8fc834d05d0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 10
+  maxVelocity: 3
   jumpSpeed: 5
+  jumpMovementMultiplier: 1
   maximumJumpCount: 1
   leftKey: left
   rightKey: right
@@ -181,7 +183,7 @@ GameObject:
   - 212: {fileID: 138158283}
   - 61: {fileID: 138158282}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Groundstuff
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +245,7 @@ GameObject:
   - 212: {fileID: 711551600}
   - 61: {fileID: 711551599}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Groundstuff
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 711551598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0199999996, y: -.5, z: -1.14999998}
-  m_LocalScale: {x: 21.8609848, y: 3.62045026, z: 1}
+  m_LocalScale: {x: 82.7984848, y: 3.62045026, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -305,7 +307,7 @@ GameObject:
   - 212: {fileID: 1385291083}
   - 61: {fileID: 1385291082}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Groundstuff
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
