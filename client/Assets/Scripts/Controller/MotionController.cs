@@ -9,7 +9,6 @@ public class MotionController : MonoBehaviour {
 	public float jumpSpeed = 1f;
 	public float jumpMovementMultiplier = 1f;
 	public int maximumJumpCount = 1;
-	public string leftKey, rightKey, jumpKey;
 
 	private float jumpStartTime;
 	private int jumpCount;
@@ -19,16 +18,16 @@ public class MotionController : MonoBehaviour {
 	}
 	
 	void Update() {
-		var hInput = (Input.GetKey(leftKey)? -1 : 0) + (Input.GetKey(rightKey)? 1 : 0);
+		var hInput = Input.GetAxis("Horizontal");
 		InfluenceMovement(hInput);
 
-		var jumpingKey = Input.GetKeyDown(jumpKey);
+		var jumpingKey = Input.GetAxis("Jump") > 0.5f;
 		if (jumpingKey) {
 			Jump();
 		}
 	}
 
-	void InfluenceMovement (int hInput) {
+	void InfluenceMovement (float hInput) {
 		var adjustedMoveSpeed = hInput * moveSpeed * Helpers.TimeScale;
 		if (jumpCount > 0) {
 			adjustedMoveSpeed *= jumpMovementMultiplier;
