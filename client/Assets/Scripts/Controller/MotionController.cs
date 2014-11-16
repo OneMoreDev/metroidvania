@@ -11,8 +11,7 @@ public class MotionController : MonoBehaviour {
 				 extraJumpSpeedMultiplier = 0.5f,
 				 jumpTimeout = 1f,
 				 extendedJumpDuration = 0.7f,
-				 jumpMovementMultiplier = 1f,
-				 jumpCollisionCompensation = 0.1f;
+				 jumpMovementMultiplier = 1f;
 	public int maximumJumpCount = 1;
 
 	private float jumpStartTime;
