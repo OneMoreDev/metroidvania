@@ -1,0 +1,5 @@
+{
+	"jump": ":A|space",
+	"dash": ":X|left shift",
+	"horizontal": "leftStickX|horizontal"
+}

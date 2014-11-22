@@ -48,9 +48,20 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Controller\MotionController.cs" />
      <Compile Include="Assets\Scripts\Helpers.cs" />
+     <Compile Include="Assets\Scripts\JoyInput.cs" />
+     <None Include="Assets\Scripts\Libraries\JSONFX\License.txt" />
+     <None Include="Assets\Scripts\Libraries\JSONFX\Readme.txt" />
+     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="JsonFx.Json">
+ <HintPath>C:/Users/Leonardo/Documents/_DEV/metroidvania/client/Assets/Scripts/Libraries/JSONFX/JsonFx.Json.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{3A1B43A0-276E-34FB-197E-1ACDE9001A0F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
