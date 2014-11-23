@@ -10,12 +10,24 @@ using UnityEngine;
 /// Handles controllers in different platforms in a unified fashion.
 /// It is preferred to use this class instead of UnityEngine.Input.
 /// 
+/// 
+/// </summary>
+/// <description>
 /// Requires all joystick axes up to 8 configured in Input Manager
 /// with names Joy[x], where x is the name of the axis configured.
 /// 
+/// Keys and axis names for XBox controllers:
+/// Keys:
+/// :a, :b, :x, :y, :right trigger, :left trigger, left bumper,
+/// right bumper, up arrow, down arrow, right arrow, left arrow, back, start
+/// Axes:
+/// left stick x, left stick y, right stick x, right stick y,
+/// bumper axis, vertical arrow axis, horizontal arrow axis
+/// </description>
+/// <remarks>
 /// Platform controller reference cheatsheets (Win, Mac, Linux) in that order:
 /// http://wiki.unity3d.com/index.php?title=Xbox360Controller
-/// </summary>
+/// </remarks>
 public class JoyInput {
 
 	/// <summary>
@@ -44,7 +56,12 @@ public class JoyInput {
 	/// <param name="axisOrKeyName">Axis or key name to retrieve.</param>
 	public static string GetMappingFor(string axisOrKeyName) {
 		TryInitialize();
-		return keyMapping[axisOrKeyName.ToLower()].ToLower();
+		try {
+			return keyMapping[axisOrKeyName.ToLower()].ToLower();
+		} catch {
+			Debug.Log(axisOrKeyName);
+			return "";
+		}
 	}
 
 	/// <summary>
@@ -123,13 +140,42 @@ public class JoyInput {
 
 		if (joyAxisDispatch == null) {
 			joyAxisDispatch = new Dictionary<string, Func<float>>();
-			joyAxisDispatch.Add("leftstickx", () => {
+			joyAxisDispatch.Add("left stick x", () => {
 				return Input.GetAxis("JoyX");
 			});
-			joyAxisDispatch.Add("left bumper", () => {
-				return 42f;
+			joyAxisDispatch.Add("left stick y", () => {
+				return Input.GetAxis("JoyY");
+			});
+			joyAxisDispatch.Add("right stick x", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy4");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetAxis("Joy3");
+				#endif
+			});
+			joyAxisDispatch.Add("right stick y", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy5");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetAxis("Joy4");
+				#endif
+			});
+
+			joyAxisDispatch.Add("bumper axis", () => {
+				return (JoyInput.GetButtonRaw("right bumper")?1:0)
+					 + (JoyInput.GetButtonRaw("left bumper")?-1:0);
+			});
+
+			joyAxisDispatch.Add("vertical arrow axis", () => {
+				return (JoyInput.GetButtonRaw("up arrow")?1:0)
+					 + (JoyInput.GetButtonRaw("down arrow")?-1:0);
+			});
+			joyAxisDispatch.Add("horizontal arrow axis", () => {
+				return (JoyInput.GetButtonRaw("right arrow")?1:0)
+					 + (JoyInput.GetButtonRaw("left arrow")?-1:0);
 			});
 		}
+
 		if (joyButtonDispatch == null) {
 			joyButtonDispatch = new Dictionary<string, Func<bool>>();
 			joyButtonDispatch.Add (":a", () => {
@@ -139,11 +185,109 @@ public class JoyInput {
 				return Input.GetKey("joystick button 16");
 				#endif
 			});
+			joyButtonDispatch.Add (":b", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetKey("joystick button 1");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetKey("joystick button 17");
+				#endif
+			});
 			joyButtonDispatch.Add (":x", () => {
 				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
 				return Input.GetKey("joystick button 2");
 				#elif UNITY_STANDALONE_OSX
 				return Input.GetKey("joystick button 18");
+				#endif
+			});
+			joyButtonDispatch.Add (":y", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetKey("joystick button 3");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetKey("joystick button 19");
+				#endif
+			});
+
+			joyButtonDispatch.Add(":right trigger", () => {
+				#if UNITY_STANDALONE_WIN
+				return Input.GetAxis("Joy3") < 0f;
+				#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
+				return Input.GetAxis("Joy6") > 0f;
+				#endif
+			});
+			joyButtonDispatch.Add(":left trigger", () => {
+				#if UNITY_STANDALONE_WIN
+				return Input.GetAxis("Joy3") > 0f;
+				#elif UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy3") > 0f;
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetAxis("Joy5") > 0f;
+				#endif
+			});
+
+			joyButtonDispatch.Add("left bumper", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetButton("joystick button 4");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 13");
+				#endif
+			});
+			joyButtonDispatch.Add("right bumper", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetButton("joystick button 5");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 14");
+				#endif
+			});
+
+			joyButtonDispatch.Add("up arrow", () => {
+				#if UNITY_STANDALONE_WIN 
+				return Input.GetAxis("Joy7") > 0;
+				#elif UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy8") > 0;
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 5");
+				#endif
+			});
+			joyButtonDispatch.Add("down arrow", () => {
+				#if UNITY_STANDALONE_WIN 
+				return Input.GetAxis("Joy7") < 0;
+				#elif UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy8") < 0;
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 6");
+				#endif
+			});
+			joyButtonDispatch.Add("right arrow", () => {
+				#if UNITY_STANDALONE_WIN 
+				return Input.GetAxis("Joy6") > 0;
+				#elif UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy7") > 0;
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 7");
+				#endif
+			});
+			joyButtonDispatch.Add("left arrow", () => {
+				#if UNITY_STANDALONE_WIN 
+				return Input.GetAxis("Joy6") < 0;
+				#elif UNITY_STANDALONE_LINUX
+				return Input.GetAxis("Joy7") < 0;
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 8");
+				#endif
+			});
+
+			joyButtonDispatch.Add("back", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetButton("joystick button 6");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 10");
+				#endif
+			});
+			joyButtonDispatch.Add("start", () => {
+				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
+				return Input.GetButton("joystick button 7");
+				#elif UNITY_STANDALONE_OSX
+				return Input.GetButton("joystick button 9");
 				#endif
 			});
 		}

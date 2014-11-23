@@ -1,9 +1,11 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controller\MotionController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controller\PlayerCombatController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controller\MotionController.cs" Line="17" Column="19" />
-      <File FileName="Assets\Scripts\JoyInput.cs" Line="146" Column="44" />
+      <File FileName="Assets\Scripts\Controller\Weapon.cs" Line="11" Column="54" />
+      <File FileName="Assets\Scripts\Controller\MeleeWeapon.cs" Line="6" Column="17" />
+      <File FileName="Assets\Scripts\Controller\PlayerCombatController.cs" Line="7" Column="11" />
+      <File FileName="Assets\keymap.json" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

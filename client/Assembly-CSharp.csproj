@@ -46,7 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Controller\CombatController.cs" />
+     <Compile Include="Assets\Scripts\Controller\MeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\Controller\MotionController.cs" />
+     <Compile Include="Assets\Scripts\Controller\PlayerCombatController.cs" />
+     <Compile Include="Assets\Scripts\Controller\Weapon.cs" />
      <Compile Include="Assets\Scripts\Helpers.cs" />
      <Compile Include="Assets\Scripts\JoyInput.cs" />
      <None Include="Assets\Scripts\Libraries\JSONFX\License.txt" />

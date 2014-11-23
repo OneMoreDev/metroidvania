@@ -1,5 +1,6 @@
 {
 	"jump": ":A|space",
-	"dash": ":X|left shift",
-	"horizontal": "leftStickX|horizontal"
+	"dash": ":B|left shift",
+	"attack": ":right trigger|z",
+	"horizontal": "left stick x|horizontal arrow axis|horizontal"
 }
