@@ -226,16 +226,16 @@ public class JoyInput {
 
 			joyButtonDispatch.Add("left bumper", () => {
 				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
-				return Input.GetButton("joystick button 4");
+				return Input.GetKey("joystick button 4");
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 13");
+				return Input.GetKey("joystick button 13");
 				#endif
 			});
 			joyButtonDispatch.Add("right bumper", () => {
 				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
-				return Input.GetButton("joystick button 5");
+				return Input.GetKey("joystick button 5");
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 14");
+				return Input.GetKey("joystick button 14");
 				#endif
 			});
 
@@ -245,7 +245,7 @@ public class JoyInput {
 				#elif UNITY_STANDALONE_LINUX
 				return Input.GetAxis("Joy8") > 0;
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 5");
+				return Input.GetKey("joystick button 5");
 				#endif
 			});
 			joyButtonDispatch.Add("down arrow", () => {
@@ -254,7 +254,7 @@ public class JoyInput {
 				#elif UNITY_STANDALONE_LINUX
 				return Input.GetAxis("Joy8") < 0;
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 6");
+				return Input.GetKey("joystick button 6");
 				#endif
 			});
 			joyButtonDispatch.Add("right arrow", () => {
@@ -263,7 +263,7 @@ public class JoyInput {
 				#elif UNITY_STANDALONE_LINUX
 				return Input.GetAxis("Joy7") > 0;
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 7");
+				return Input.GetKey("joystick button 7");
 				#endif
 			});
 			joyButtonDispatch.Add("left arrow", () => {
@@ -272,22 +272,22 @@ public class JoyInput {
 				#elif UNITY_STANDALONE_LINUX
 				return Input.GetAxis("Joy7") < 0;
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 8");
+				return Input.GetKey("joystick button 8");
 				#endif
 			});
 
 			joyButtonDispatch.Add("back", () => {
 				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
-				return Input.GetButton("joystick button 6");
+				return Input.GetKey("joystick button 6");
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 10");
+				return Input.GetKey("joystick button 10");
 				#endif
 			});
 			joyButtonDispatch.Add("start", () => {
 				#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
-				return Input.GetButton("joystick button 7");
+				return Input.GetKey("joystick button 7");
 				#elif UNITY_STANDALONE_OSX
-				return Input.GetButton("joystick button 9");
+				return Input.GetKey("joystick button 9");
 				#endif
 			});
 		}

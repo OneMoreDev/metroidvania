@@ -46,20 +46,20 @@ public class MotionController : MonoBehaviour {
 			}
 		}
 
-		var dashingKey = JoyInput.GetButton("dash");
-		if (dashingKey) {
+		var dashingAxis = JoyInput.GetAxis("dash");
+		if (Mathf.Abs(dashingAxis) > 0.1) {
 			if (dashStartTime + dashTimeout < Time.timeSinceLevelLoad) {
 				if (!wasDashingBefore) {
 					dashStartTime = Time.timeSinceLevelLoad;
 				}
 			} 
 			if (dashStartTime + dashDuration > Time.timeSinceLevelLoad) {
-				rigidbody2D.velocity = horizontalDirectionIntention * dashSpeed * Vector2.right;
+				rigidbody2D.velocity = dashingAxis * dashSpeed * Vector2.right;
 			}
 		}
 
 		wasJumpingBefore = jumpingKey;
-		wasDashingBefore = dashingKey;
+		wasDashingBefore = Mathf.Abs(dashingAxis) > 0.1;
 	}
 
 	void InfluenceMovement(float hInput) {

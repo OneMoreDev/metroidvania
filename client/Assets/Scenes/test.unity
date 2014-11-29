@@ -102,14 +102,14 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 400625139}
   m_GameObject: {fileID: 134715556}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 1
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!61 &134715558
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   maxVelocity: 3
-  jumpSpeed: 3
+  jumpSpeed: 3.0999999
   extraJumpSpeedMultiplier: .5
   jumpTimeout: .300000012
   extendedJumpDuration: .300000012
@@ -191,10 +191,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 134715556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95fb797ed43635641a8a1c2240fd076d, type: 3}
+  m_Script: {fileID: 11500000, guid: ecdf0c72f9fbac444abd8ade8247ba91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  baseAttackTime: 1
 --- !u!1 &138158281
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 249571955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0334560014, y: 3.81270003, z: 0}
+  m_LocalPosition: {x: .0334560014, y: 3.42269993, z: 0}
   m_LocalScale: {x: 21.8609848, y: 3.62045026, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -357,6 +358,22 @@ Prefab:
     - target: {fileID: 400000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
+      propertyPath: jumpSpeed
+      value: 3.0999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2df81904ea0195e488eb7c35d315053d, type: 2}
@@ -606,7 +623,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966173794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.67440009, y: 5.6718998, z: 0}
+  m_LocalPosition: {x: 2.67440009, y: 5.08690023, z: 0}
   m_LocalScale: {x: 21.8609848, y: 3.62045026, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

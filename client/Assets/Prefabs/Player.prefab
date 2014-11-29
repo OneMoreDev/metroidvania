@@ -167,10 +167,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95fb797ed43635641a8a1c2240fd076d, type: 3}
+  m_Script: {fileID: 11500000, guid: ecdf0c72f9fbac444abd8ade8247ba91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  baseAttackTime: 1
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
