@@ -2,13 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 public abstract class Weapon : MonoBehaviour {
-	public float damage;
-	public float reach;
-	public float attackSpeed;
+	public int damage;
+	public float attackSpeed = 1f;
 
 	public bool attacking {get; set;}
 
-	public void AttackUpdate(CombatController controller) {
-		throw new System.NotImplementedException();
-	}
+	public abstract void AttackUpdate(CombatController controller);
 }
